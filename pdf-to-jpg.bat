@@ -22,16 +22,21 @@ REM Process each file passed as parameter (supports drag & drop of multiple PDFs
 :loop
 if "%~1"=="" goto done
 if /I not "%~x1"==".pdf" (
-	shift /1
-	goto loop
+    shift /1
+    goto loop
 )
 pushd "%~dp1" || (
-	echo The system cannot find the path specified: "%~dp1"
-	shift /1
-	goto loop
+    echo The system cannot find the path specified: "%~dp1"
+    shift /1
+    goto loop
 )
+
 set "PDFFILE=%~nx1"
-set "JPGFILE=!PDFFILE:.pdf=-%%d.jpg!"
+set "PDFBASE=%~n1"
+
+if not exist "jpg" mkdir "jpg"
+
+set "JPGFILE=jpg\!PDFBASE!-%%d.jpg"
 
 echo Converting: !PDFFILE!
 
