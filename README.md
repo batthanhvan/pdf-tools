@@ -1,4 +1,4 @@
-# PDF Tools
+﻿# PDF Tools
 
 Batch scripts for PDF processing using Ghostscript library. Works well
 even with very big and heavy PDF files. No file size limits.
@@ -28,6 +28,23 @@ Drag and drop multiple PDF files onto _combine-pdf.bat_
 - If the file already exists, a numeric suffix is added: `combined_1.pdf`, `combined_2.pdf`, etc.
 
 ---
+
+## Translate PDFs
+
+Translate PDF documents using Google Translate (via browser automation).
+
+**How to use:**
+- Place your PDF files in a folder (for example, the `input/` directory).
+- Run: `python translate.py <input_dir>`
+- Example: `python translate.py input`
+
+**Output:**
+- Translated PDFs are saved to `<input_dir>/translated/`.
+
+**Notes & requirements:**
+- The script uses Selenium and ChromeDriver. Install Selenium with: `pip install selenium`.
+- Ensure Google Chrome and a matching `chromedriver` are installed and available in your `PATH`.
+- The script compresses PDFs larger than 10 MB using Ghostscript before uploading. Maximum upload size is 10 MB; files still larger after compression will be skipped.
 
 ## Requirements
 
